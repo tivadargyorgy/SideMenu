@@ -91,12 +91,7 @@ internal final class SideMenuPresentationController {
 
         guard let statusBarView = statusBarView else { return }
         let statusBarOffset = containerView.frame.size.height - presentedViewController.view.bounds.height
-        var statusBarFrame: CGRect
-        if #available(iOS 13.0, *) {
-            statusBarFrame = containerView.window?.windowScene?.statusBarManager?.statusBarFrame ?? .zero
-        } else {
-            statusBarFrame = UIApplication.shared.statusBarFrame
-        }
+        var statusBarFrame = UIApplication.shared.statusBarFrame
 
         // For in-call status bar, height is normally 40, which overlaps view. Instead, calculate height difference
         // of view and set height to fill in remaining space.
